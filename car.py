@@ -11,5 +11,5 @@ class Car:
     def stop(self):
         print(f"You stop the {self.color} {self.model}")
 
-    def descibe(self):
+    def describe(self):
         print(f"{self.year} {self.color} {self.model}")
