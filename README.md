@@ -1,19 +1,28 @@
-# Python OOP & Machine Learning
+# Python OOP
 
-A learning log tracking my progress with object-oriented programming in Python and machine learning.
+A learning log tracking my progress with object-oriented programming in Python.
 
 ## Contents
 
 | File | Topic |
 |------|-------|
 | `car.py` | OOP basics: a `Car` class with attributes and methods |
-| `main.py` | Creating and using `Car` objects |
+| `maincar.py` | Creating and using `Car` objects |
 
 ## Progress
 
-- [x] Classes, `__init__`, attributes and methods
+- [x] Classes and objects
+- [ ] Class variables
 - [ ] Inheritance
-- [ ] Encapsulation and properties
-- [ ] Polymorphism and dunder methods
-- [ ] NumPy and pandas
-- [ ] First ML model with scikit-learn
+- [ ] Multiple inheritance
+- [ ] Abstract classes
+- [ ] `super()`
+- [ ] Polymorphism
+- [ ] Duck typing
+- [ ] Aggregation
+- [ ] Composition
+- [ ] Nested classes
+- [ ] Static methods
+- [ ] Class methods
+- [ ] Magic methods
+- [ ] `@property` decorator
