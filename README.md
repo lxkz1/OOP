@@ -13,7 +13,7 @@ A learning log tracking my progress with object-oriented programming in Python.
 
 - [x] Classes and objects
 - [x] Class variables
-- [ ] Inheritance
+- [x] Inheritance
 - [ ] Multiple inheritance
 - [ ] Abstract classes
 - [ ] `super()`
