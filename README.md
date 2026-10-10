@@ -1,6 +1,6 @@
 # Python OOP
 
-A learning log tracking my progress with object-oriented programming in Python.
+A learning log that tracks my progress with object-oriented programming in Python Programming.
 
 ## Progress
 
