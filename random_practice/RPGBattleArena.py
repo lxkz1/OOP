@@ -18,7 +18,7 @@ class Characters:
         if amount < self.health:
             self.health -= amount
         else:
-            return "The Character has been killed"
+            self.health = 0
 
     def is_alive(self):
         if self.health > 0:
@@ -37,33 +37,26 @@ class Warrior(Characters):
     shield = 5
 
     def take_damage(self, amount):
-        reduced = self.health - (max(0, amount - self.shield))
-        super().take_damage(reduced)
+        if self.shield > 0:
+            reduced = amount - self.shield
+            super().take_damage(reduced)
+        else:
+            super().take_damage(amount)
 
 
 class Mage(Characters):
 
-    mana = 100
+    def __init__(self, name, health, attack):
+        super().__init__(name, health, attack)
+        self.mana = 100
 
-    def fireball(self):
-        if self.mana > 50:
-            return "Pass"
+    def attacks(self, target):
+        if self.mana >= 30:
+            self.mana -=30
+            damage = self.attack_power * 3
+            target.take_damage(damage)
         else:
-            return "False"
-
-    def take_damage(self, amount):
-        if self.fireball() == "Pass":
-            amount = 0
-            if amount < self.health:
-                self.health -= amount
-            else:
-                return "The Character has been killed"
-        else:
-            if amount < self.health:
-                self.health -= amount
-            else:
-                return "The Character has been killed"
-
+            super().attacks(target)
 
 class Archer(Characters):
 
@@ -75,29 +68,26 @@ class Archer(Characters):
 
     def attacks(self, target):
         if self.critical_chance() == "Pass":
-            target_health = target.health() - (self.attack_power * 2)
-            return target_health
+            target.take_damage(self.attack_power*2)
         else:
-            target_health = target.health() - self.attack_power
-            return target_health
+            super().attacks(target)
 
 def main():
     characters = []
     for i in range(1,3):
         character_type = type_of_character()
         charname = input(f"please input your {character_type} number {i}'s name: ")
-        charhealth = input(f"please input your {character_type} number {i}'s health: ")
-        charattack = input(f"please input your {character_type} attack {i}'s power: ")
-        if type_of_character == "archer":
+        charhealth = int(input(f"please input your {character_type} number {i}'s health: "))
+        charattack = int(input(f"please input your {character_type} attack {i}'s power: "))
+        if character_type == "archer":
             char = Archer(charname,charhealth,charattack)
-        elif type_of_character == "mage":
+        elif character_type == "mage":
             char = Mage(charname,charhealth,charattack)
-        elif type_of_character == "warrior":
+        elif character_type == "warrior":
             char = Warrior(charname,charhealth,charattack)
         else:
             char = Characters(charname,charhealth,charattack)
         characters.append(char)
-
     char1 , char2 = characters
     battle(char1,char2)
         
@@ -117,10 +107,18 @@ def type_of_character():
             continue 
 
 
-def battle(char1, char2):
-    while True:
+def battle(char1 : Characters, char2: Characters):
+    while char1.is_alive() and char2.is_alive():
         char1.attacks(char2)
-
+        if char2.is_alive():
+            char2.attacks(char1)
+        else:
+            break
+    if char1.is_alive():
+        print(f"{char1.name} has eliminated {char2.name}")
+    else:
+        print(f"{char2.name} has eliminated {char1.name}")
+    
 
 
 if __name__ == "__main__":
