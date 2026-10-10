@@ -81,4 +81,4 @@ for s in shapes:
     s.calculation_of_perimeter()
     s.describe()
 
-print("Shapes created:", Shape.shape_count)
+print("Shapes created: ", Shape.shape_count)
