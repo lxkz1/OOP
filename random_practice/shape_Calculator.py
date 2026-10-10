@@ -5,12 +5,12 @@ class Shape(ABC):
 
     shape_count = 0
 
-    def __init__(self, name, heights, base,radius="",diameter="",radiuss="",area="",perimeter=""):
+    def __init__(self, name, heights, base,diameter="",radius="",area="",perimeter=""):
         self.name = name
         self.heights = heights
         self.bases = base
         self.diameter = diameter
-        self.radius = radiuss
+        self.radius = radius
         self.area = area 
         self.perimeter = perimeter
         Shape.shape_count += 1
@@ -31,24 +31,19 @@ class Circle(Shape):
         radiusss = float(self.diameter) / 2
         return radiusss
 
-    def diamate(self):
-        d = float(self.radius) * 2
-        return d 
-
     def calculation_of_area(self):
         if self.radius == "":
             radius = self.radiu()
-            area = 3.14 * float(radius)
+            area = 3.14 * (float(radius) ** 2)
         else:
-            area = 3.14 * float(self.radius)
+            area = 3.14 * (float(self.radius) **2)
         self.area = area 
 
     def calculation_of_perimeter(self):
         if self.diameter == "":
-            diamte = self.diamate()
-            perimeter = 2 * 3.14 * diamte
+            perimeter = 2 *(3.14 * float(self.radius))
         else:
-            perimeter = 2 * 3.14 * float(self.diameter)
+            perimeter = 3.14 * float(self.diameter)
         self.perimeter = perimeter
 
 
