@@ -69,8 +69,6 @@ class Square(Shape):
         perimeter = float(self.side) * 4
         self.perimeter = perimeter
 
-
-# ---------------- TESTS ----------------
 circle1 = Circle("circle", radius=2)
 circle2 = Circle("big circle", diameter=10)
 rectangle = Rectangle("rectangle", heights=3, base=4)
