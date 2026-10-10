@@ -16,7 +16,7 @@ A learning log tracking my progress with object-oriented programming in Python.
 - [x] Inheritance
 - [x] Multilevel inheritance
 - [x] Multiple inheritance
-- [ ] Abstract classes
+- [x] Abstract classes
 - [ ] `super()`
 - [ ] Polymorphism
 - [ ] Duck typing
