@@ -1,19 +1,15 @@
 from abc import ABC, abstractmethod
+import math
 
 
 class Shape(ABC):
 
     shape_count = 0
 
-    def __init__(self, name, heights="", base="",diameter="",radius="",area="",perimeter="",side=""):
+    def __init__(self, name, area="",perimeter="",):
         self.name = name
-        self.heights = heights
-        self.bases = base
-        self.diameter = diameter
-        self.radius = radius
         self.area = area 
         self.perimeter = perimeter
-        self.side = side
         Shape.shape_count += 1
 
     def describe(self):
@@ -28,26 +24,36 @@ class Shape(ABC):
         pass
 
 class Circle(Shape):
-    def radiu(self):
+    def __init__(self, name, area = "" , perimeter = "" ,radius = 0 , diameter = 0):
+        super().__init__(name, area, perimeter)
+        self.radius = radius
+        self.diameter = diameter
+
+
+    def get_radius(self):
         radiusss = float(self.diameter) / 2
         return radiusss
 
     def calculation_of_area(self):
-        if self.radius == "":
-            radius = self.radiu()
-            area = 3.14 * (float(radius) ** 2)
+        if self.radius == 0 and self.diameter != 0:
+            radius = self.get_radius()
+            area = math.pi * (float(radius) ** 2)
         else:
-            area = 3.14 * (float(self.radius) **2)
+            area = math.pi * (float(self.radius) **2)
         self.area = area 
 
     def calculation_of_perimeter(self):
-        if self.diameter == "":
-            perimeter = 2 *(3.14 * float(self.radius))
+        if self.diameter == 0:
+            perimeter = 2 *(math.pi * float(self.radius))
         else:
-            perimeter = 3.14 * float(self.diameter)
+            perimeter = math.pi * float(self.diameter)
         self.perimeter = perimeter
 
 class Rectangle(Shape):
+    def __init__(self, name, area = "", perimeter= "",base = 0, heights = 0):
+        super().__init__(name, area, perimeter)
+        self.bases = base
+        self.heights = heights
     
     def calculation_of_area(self):
         area = float(self.bases) * float(self.heights)
@@ -58,6 +64,9 @@ class Rectangle(Shape):
         self.perimeter = perimeter
 
 class Square(Shape):
+    def __init__(self, name, area="", perimeter="",side = 0):
+        super().__init__(name, area, perimeter)
+        self.side = side
 
     def calculation_of_area(self):
         area = float(self.side) ** 2
