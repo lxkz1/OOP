@@ -50,10 +50,9 @@ class Crypto(Payment_Method):
     stored_crypto_rate = 0
 
     def get_crypto_rate(self,coin="bitcoin"):
-        url = "https://api.coingecko.com/api/v3/simple/price"
-        params = {"ids": coin, "vs_currencies": "eur"}
+        url = "https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=eur"
         try:
-            response = requests.get(url, params=params, timeout=5)
+            response = requests.get(url)
             response.raise_for_status()
             Crypto.stored_crypto_rate = response.json()[coin]["eur"]
             return Crypto.stored_crypto_rate
