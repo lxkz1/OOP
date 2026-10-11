@@ -38,13 +38,13 @@ class teaching_assistant(Student, Teacher):
     def assist_student(self):
         print(f"{self.name} is a assisting {Person.amount_of_people} which is the entire school")
 
-# ---------------- TESTS ----------------
+
 robert = Student("Robert", 17)
 camilla = Teacher("Camilla", 40)
 david = Teacher("David", 35)
 sam = teaching_assistant("Sam", 22)
 
-print("--- Student ---")
+print("student")
 robert.introduction()
 robert.study_project("robotics")
 
@@ -52,22 +52,19 @@ print("\n--- Teacher ---")
 camilla.introduction()
 camilla.teach("maths")
 
-print("\n--- Teaching assistant (inherits from both) ---")
+print("Teaching assistant (inherits from both)")
 sam.introduction()
 sam.study_project("biology")
 sam.raise_salary(200)
 sam.assist_student()
 sam.teach("physics")
 
-print("\n--- Class variable: total people ---")
+print("Class variable: total people")
 print("People created:", Person.amount_of_people)
 
-print("\n--- Raise only affects one teacher ---")
+print("Raise only affects one teacher")
 camilla.raise_salary(1000)
 print("Teacher.Teacher_Salary (class):", Teacher.Teacher_Salary)
 print("camilla.Teacher_Salary:", camilla.Teacher_Salary)
 print("david.Teacher_Salary:", david.Teacher_Salary)
 
-print("\n--- Method resolution order of teaching_assistant ---")
-for cls in teaching_assistant.__mro__:
-    print(cls.__name__)
