@@ -10,7 +10,7 @@ A learning log that tracks my progress with object-oriented programming in Pytho
 - [x] Multilevel inheritance
 - [x] Multiple inheritance
 - [x] Abstract classes
-- [ ] `super()`
+- [x] `super()`
 - [ ] Polymorphism
 - [ ] Duck typing
 - [ ] Aggregation
