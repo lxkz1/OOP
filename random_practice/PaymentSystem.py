@@ -80,20 +80,13 @@ class Crypto(Payment_Method):
 card = CreditCard(1000)
 paypal = Paypal(200)
 wallet = Crypto(0.01)
-
-# payments that should go through
 card.pay_amount(100)
 paypal.pay_amount(50)
 wallet.pay_amount(100)
-
-# payments that should fail
 card.pay_amount(5000)
 paypal.pay_amount(500)
 wallet.pay_amount(1000000)
-
-# polymorphism: same calls, different payment methods
 methods = [card, paypal, wallet]
-
 for m in methods:
     m.pay_amount(20)
     m.describe()
