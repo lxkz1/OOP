@@ -11,7 +11,7 @@ A learning log that tracks my progress with object-oriented programming in Pytho
 - [x] Multiple inheritance
 - [x] Abstract classes
 - [x] `super()`
-- [ ] Polymorphism
+- [x] Polymorphism
 - [ ] Duck typing
 - [ ] Aggregation
 - [ ] Composition
