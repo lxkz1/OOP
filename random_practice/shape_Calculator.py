@@ -83,9 +83,9 @@ square = Square("square", side=5)
 
 shapes = [circle1, circle2, rectangle, square]
 
-for s in shapes:
-    s.calculation_of_area()
-    s.calculation_of_perimeter()
-    s.describe()
+for shape in shapes:
+    shape.calculation_of_area()
+    shape.calculation_of_perimeter()
+    shape.describe()
 
 print("Shapes created: ", Shape.shape_count)
