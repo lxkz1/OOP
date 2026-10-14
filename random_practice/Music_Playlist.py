@@ -49,27 +49,15 @@ song1 = Song("Bohemian Rhapsody", "Queen", 354)
 song2 = Song("Blinding Lights", "The Weeknd", 200)
 song3 = Song("Hotel California", "Eagles", 391)
 song4 = Song("Imagine", "John Lennon", 183)
-
 song1.describe()
 song2.describe()
-
 playlist = Playlist("Road Trip")
-
-# adding songs
 playlist.add_song(song1)
 playlist.add_song(song2)
 playlist.add_song(song3)
-
-# adding a song that's already there
 playlist.add_song(song1)
-
-# removing a song
 playlist.remove_song(song2)
-
-# removing a song that isn't there
 playlist.remove_song(song4)
-
 print("Songs in playlist:", len(playlist.playlists))
-
 playlist.show_song()
 playlist.total_minutes_and_seconds()
