@@ -1,3 +1,3 @@
 # Python OOP
-Random OOP stuff
+Stuff For Python Object-Oriented-Programming
 
