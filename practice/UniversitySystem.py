@@ -112,7 +112,5 @@ print(oxford.close_department("Physics"))
 print(oxford.close_department(maths))
 cs.show_everyone_in_department()
 oxford.Summary()
-
-# Successfully closing a department
 print(oxford.close_department(cs))
-oxford.Summary()                                              # should print nothing now
+oxford.Summary()                                           
