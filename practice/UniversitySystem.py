@@ -89,41 +89,27 @@ class Students(People_In_school):
     def describe(self):
         return f"Hello i am {self.name} and i am Year {self.year} at {self.university}"
 
-
-# ---------- Test calls ----------
 oxford = University(name="Oxford", date_of_foundation=1096, department="Computer Science")
 cambridge = University(name="Cambridge", date_of_foundation=1209, department="Mathematics")
-
 cs = oxford.department
 maths = cambridge.department
-
-# People
 prof = Professor(name="Alan Turing", subject="Computer Science", university=oxford.name)
 student = Students(name="Ada Lovelace", year=2, university=oxford.name)
 print(prof.describe())
 print(student.describe())
-
-# Adding people to a department
 print(cs.add_student_or_professor(student=student.name))
-print(cs.add_student_or_professor(student=student.name))      # duplicate student
+print(cs.add_student_or_professor(student=student.name))      
 print(cs.add_student_or_professor(professor=prof.name))
-print(cs.add_student_or_professor(professor=prof.name))       # duplicate professor
-print(cs.add_student_or_professor())                          # no name given
+print(cs.add_student_or_professor(professor=prof.name))       
+print(cs.add_student_or_professor())                          
 print(maths.add_student_or_professor(student="Isaac Newton"))
-
-# Abstract class cannot be instantiated
 try:
     People_In_school("Nobody")
 except TypeError as e:
     print(f"TypeError: {e}")
-
-# Opening / closing departments
 print(oxford.open_department(cs))
-print(oxford.close_department("Physics"))                     # not in the list
+print(oxford.close_department("Physics"))                     
 print(oxford.close_department(maths))
-
-
-# Printing methods
 cs.show_everyone_in_department()
 oxford.Summary()
 
