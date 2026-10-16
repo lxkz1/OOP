@@ -8,14 +8,16 @@ class Department:
         self.student_number = []
         self.professor_number = []
 
-    def add_student_or_professor(self, student="",professor=""):
+    def add_student_or_professor(self, student):
         if student != "":
             if student in self.student_number:
                 return f"{student} is already enrolled in {self.name} Department"
             else:
                 self.student_number.append(student)
                 return f"{student} has been successfully added to {self.name}"
-        elif professor != "":
+
+    def add_professor(self,professor):
+        if professor != "":
             if professor in self.professor_number:
                 return f"{professor} is already present in the {self.name} Department"
             else:
@@ -34,32 +36,41 @@ class Department:
 
 class University:
 
-    def __init__(self,name,date_of_foundation,department):
+    def __init__(self,name,date_of_foundation):
         self.name = name
         self.date_of_foundation = date_of_foundation
-        self.department = Department(department)
         self.departments = []
-        self.departments.append(self.department)
 
 
-    def close_department(self,department):
-        if department in self.departments:
-            self.departments.remove(department)
-            return f"Successfully Removed {department.name} from {self.name} University"
-        else:
-            name = department.name if isinstance(department, Department) else department
+    def close_department(self,name):
+        if self.get_department(name) is None:
             return f"{name} Cannot be removed because it is not available in the current list of departments in {self.name} University"
+        else:
+            self.departments.remove(self.get_department(name))
+            return f"Successfully Removed {name} from {self.name} University"
+
 
     def open_department(self, department):
-        if department in self.departments:
-            return f"The {department.name} is already avaiable in the current list of departments in {self.name} University so it cannot be added"
+        if self.get_department(department) is not None:
+            name = department.name if isinstance(department, Department) else department
+            return f"The {name} is already avaiable in the current list of departments in {self.name} University so it cannot be added"
         else:
-            self.departments.append(department)
+            self.department = Department(department)
+            self.departments.append(self.department)
             return f"The {department.name} has been officially added to the list of available departments in {self.name} University"
 
     def Summary(self):
+        if not self.departments:
+            print(f"There are no departments available in {self.name} University")
         for i , department in enumerate(self.departments):
             print(f"Department Number : {i} ,Department Name : {department.name},Number Of Student's : {len(department.student_number)},Number Of Professor's : {len(department.professor_number)}")
+
+    def get_department(self,name):
+        for department in self.departments:
+            if name == department.name:
+                return department
+            else:
+                continue
 
 
 class People_In_school(ABC):
@@ -89,28 +100,41 @@ class Students(People_In_school):
     def describe(self):
         return f"Hello i am {self.name} and i am Year {self.year} at {self.university}"
 
-oxford = University(name="Oxford", date_of_foundation=1096, department="Computer Science")
-cambridge = University(name="Cambridge", date_of_foundation=1209, department="Mathematics")
-cs = oxford.department
-maths = cambridge.department
+
+oxford = University(name="Oxford", date_of_foundation=1096)
+oxford.Summary()
+try:
+    print(oxford.open_department("Computer Science"))
+except AttributeError as e:
+    print(f"open_department failed -> AttributeError: {e}")
+try:
+    print(oxford.open_department("Mathematics"))
+except AttributeError as e:
+    print(f"open_department failed -> AttributeError: {e}")
+print(oxford.open_department("Computer Science"))
+cs = oxford.get_department("Computer Science")
+maths = oxford.get_department("Mathematics")
+print(cs.name)
+print(oxford.get_department("Physics"))
 prof = Professor(name="Alan Turing", subject="Computer Science", university=oxford.name)
 student = Students(name="Ada Lovelace", year=2, university=oxford.name)
 print(prof.describe())
 print(student.describe())
-print(cs.add_student_or_professor(student=student.name))
-print(cs.add_student_or_professor(student=student.name))      
-print(cs.add_student_or_professor(professor=prof.name))
-print(cs.add_student_or_professor(professor=prof.name))       
-print(cs.add_student_or_professor())                          
-print(maths.add_student_or_professor(student="Isaac Newton"))
 try:
     People_In_school("Nobody")
 except TypeError as e:
     print(f"TypeError: {e}")
-print(oxford.open_department(cs))
-print(oxford.close_department("Physics"))                     
-print(oxford.close_department(maths))
+print(cs.add_student_or_professor(student.name))
+print(cs.add_student_or_professor(student.name))
+print(cs.add_student_or_professor("Grace Hopper"))
+print(cs.add_student_or_professor(""))
+print(maths.add_student_or_professor("Isaac Newton"))
+print(cs.add_professor(prof.name))
+print(cs.add_professor(prof.name))
+print(cs.add_professor(""))
 cs.show_everyone_in_department()
 oxford.Summary()
-print(oxford.close_department(cs))
-oxford.Summary()                                           
+print(oxford.close_department("Physics"))
+print(oxford.close_department("Mathematics"))
+print(oxford.close_department("Mathematics"))
+oxford.Summary()
