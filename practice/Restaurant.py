@@ -32,11 +32,11 @@ class Restaurant:
         if table_number in self.orders:
             order = self.orders[table_number]
             if len(order.dishes_ordered) == 0:
-                return f"Please Enter the dishes you want to order: "
+                return f"Please tell me the dishes you want to order: "
             else:
                 return f"You have already ordered"
         else:
-            answer = input(f"Do you wish for me to open a table number for you?").strip().lower()
+            answer = input(f"Do you wish for me to open a table number for you? : ").strip().lower()
             if "yes" in answer:
                 while True:
                     number = random.randint(1, 100)
@@ -47,6 +47,7 @@ class Restaurant:
                 self.order = self.Order(number)
                 self.orders[number] = self.order
                 print(f"Okay Your Table number will be {number}")
+                return number
             else:
                 print(f"Okay have a nice day!")
 
@@ -73,11 +74,9 @@ class Restaurant:
                 dish_price_total += dish.dish_price
             amount_of_tax = dish_price_total * self.tax_rate
             total = dish_price_total + amount_of_tax
-            print(f"total : {total}$")
+            print(f"total : {total:.2f}$")
         else:
          print(f"{table_number} is not a table")
-
-
 
 krusty_krab = Restaurant("Krusty Krab", 0.1)
 print(krusty_krab.add_dish_to_menu("Krabby Patty", 3.5))
