@@ -65,9 +65,36 @@ class Restaurant:
 
 
     def tables_bill(self, table_number):
+        dish_price_total = 0
         if table_number in self.orders:
             for dish in self.orders[table_number].dishes_ordered:
                 print(f"{dish.dish_name} , {dish.dish_price}")
+            for dish in self.orders[table_number].dishes_ordered:
+                dish_price_total += dish.dish_price
+            amount_of_tax = dish_price_total * self.tax_rate
+            total = dish_price_total + amount_of_tax
+            print(f"total : {total}$")
         else:
-            return f"{table_number} is not a table"
+         print(f"{table_number} is not a table")
 
+
+
+krusty_krab = Restaurant("Krusty Krab", 0.1)
+print(krusty_krab.add_dish_to_menu("Krabby Patty", 3.5))
+print(krusty_krab.add_dish_to_menu("Kelp Shake", 2))
+print(krusty_krab.add_dish_to_menu("Coral Bits", 1.5))
+print(krusty_krab.add_dish_to_menu("Krabby Patty", 4))
+krusty_krab.show_menu()
+krusty_krab.open_order_for_table(0)
+table = list(krusty_krab.orders)[-1]
+print(krusty_krab.open_order_for_table(table))
+print(krusty_krab.add_dish_to_table("Krabby Patty", table))
+print(krusty_krab.add_dish_to_table("Kelp Shake", table))
+print(krusty_krab.add_dish_to_table("Krabby Patty", table))
+print(krusty_krab.add_dish_to_table("Pizza", table))
+print(krusty_krab.add_dish_to_table("Kelp Shake", 999))
+print(krusty_krab.open_order_for_table(table))
+krusty_krab.tables_bill(table)
+krusty_krab.tables_bill(999)
+krusty_krab.open_order_for_table(0)
+print(len(krusty_krab.orders))
