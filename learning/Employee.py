@@ -25,12 +25,12 @@ company2 = Company("Chum Bucket")
 companies = [company,company2]
 
 company.add_employee("Eugene", "Manager")
-company.add_employee("Spoongebob", "Cook")
+company.add_employee("Spongebob", "Cook")
 company.add_employee("SquidWard", "Cashier")
 
 
 company2.add_employee("Sheldon", "Manager")
-company2.add_employee("Karen", "Asistant")
+company2.add_employee("Karen", "Assistant")
 company2.add_employee("Dave", "Engineer")
 
 for company in companies:
