@@ -1,3 +1,3 @@
 # Python OOP
-Stuff For Python Object-Oriented-Programming
+Things For Python Object-Oriented-Programming
 
