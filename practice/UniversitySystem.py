@@ -8,23 +8,24 @@ class Department:
         self.student_number = []
         self.professor_number = []
 
-    def add_student_or_professor(self, student):
-        if student != "":
-            if student in self.student_number:
-                return f"{student} is already enrolled in {self.name} Department"
-            else:
-                self.student_number.append(student)
-                return f"{student} has been successfully added to {self.name}"
+    def add_student(self, student):
+        if student in self.student_number:
+            return f"{student} is already enrolled in {self.name} Department"
+        elif student not in self.student_number:
+            self.student_number.append(student)
+            return f"{student} has been successfully added to {self.name}"
+        else:
+            return f"You have not entered the name of the student you want to add"
+
 
     def add_professor(self,professor):
-        if professor != "":
-            if professor in self.professor_number:
+        if professor in self.professor_number:
                 return f"{professor} is already present in the {self.name} Department"
-            else:
-                self.professor_number.append(professor)
-                return f"{professor} has been successfully added to {self.name}"
+        elif professor not in self.professor_number:
+            self.professor_number.append(professor)
+            return f"{professor} has been successfully added to {self.name}"
         else:
-            return f"You have not the name of the student"
+            return f"You have not entered the name of the professor you want to add"
 
     def show_everyone_in_department(self):
         print("Student's: ")
@@ -53,11 +54,11 @@ class University:
     def open_department(self, department):
         if self.get_department(department) is not None:
             name = department.name if isinstance(department, Department) else department
-            return f"The {name} is already avaiable in the current list of departments in {self.name} University so it cannot be added"
+            return f"The {name} is already available in the current list of departments in {self.name} University so it cannot be added"
         else:
             self.department = Department(department)
             self.departments.append(self.department)
-            return f"The {department.name} has been officially added to the list of available departments in {self.name} University"
+            return f"The {department} has been officially added to the list of available departments in {self.name} University"
 
     def Summary(self):
         if not self.departments:
@@ -103,14 +104,8 @@ class Students(People_In_school):
 
 oxford = University(name="Oxford", date_of_foundation=1096)
 oxford.Summary()
-try:
-    print(oxford.open_department("Computer Science"))
-except AttributeError as e:
-    print(f"open_department failed -> AttributeError: {e}")
-try:
-    print(oxford.open_department("Mathematics"))
-except AttributeError as e:
-    print(f"open_department failed -> AttributeError: {e}")
+print(oxford.open_department("Computer Science"))
+print(oxford.open_department("Mathematics"))
 print(oxford.open_department("Computer Science"))
 cs = oxford.get_department("Computer Science")
 maths = oxford.get_department("Mathematics")
@@ -124,11 +119,11 @@ try:
     People_In_school("Nobody")
 except TypeError as e:
     print(f"TypeError: {e}")
-print(cs.add_student_or_professor(student.name))
-print(cs.add_student_or_professor(student.name))
-print(cs.add_student_or_professor("Grace Hopper"))
-print(cs.add_student_or_professor(""))
-print(maths.add_student_or_professor("Isaac Newton"))
+print(cs.add_student(student.name))
+print(cs.add_student(student.name))
+print(cs.add_student("Grace Hopper"))
+print(cs.add_student(""))
+print(maths.add_student("Isaac Newton"))
 print(cs.add_professor(prof.name))
 print(cs.add_professor(prof.name))
 print(cs.add_professor(""))
