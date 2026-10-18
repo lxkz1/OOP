@@ -54,7 +54,7 @@ class Bank:
                     return f"the name hav eprovided does not match the account number"
                 else:
                     account.balance += float(amount_to_deposit)
-                    return f"Successfully deposited {amount_to_deposit:.2f}"
+                    return f"Successfully deposited {float(amount_to_deposit):.2f}"
 
     def withdraw_money(self,account_type,account_number,account_name,amount_to_withdraw):
         if account_type not in ["saving", "checking"]:
@@ -107,20 +107,26 @@ class Bank:
                 return f"Successfully Transferred {amount} from {a.owner} to {b.owner}"
 
 
+bank = Bank("Mini")
 
+print(bank.open_account("saving", "Marcoo"))
+print(bank.open_account("checking", "Giulia"))
+print(bank.open_account("crypto", "Marcoo"))
+print(bank.open_account("saving", "Bob"))
 
+marco, giulia = list(bank.accounts)
 
+print(bank.deposit_money("saving", marco, "Marcoo", 200))
+print(bank.deposit_money("checking", giulia, "Giulia", "50"))
+print(bank.deposit_money("saving", marco, "Giulia", 10))
 
+print(bank.withdraw_money("saving", marco, "Marcoo", 500))
+print(bank.withdraw_money("checking", giulia, "Giulia", 120))
 
+print(bank.transfer_money(75, marco, giulia))
+print(bank.transfer_money(1000, marco, giulia))
 
+print(bank.find_account_by_its_number(marco))
+print(bank.find_account_by_its_number(123))
 
-
-
-
-
-
-
-
-
-
-
+bank.show_total_worth_of_bank()
