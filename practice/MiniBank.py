@@ -108,25 +108,18 @@ class Bank:
 
 
 bank = Bank("Mini")
-
 print(bank.open_account("saving", "Marcoo"))
 print(bank.open_account("checking", "Giulia"))
 print(bank.open_account("crypto", "Marcoo"))
 print(bank.open_account("saving", "Bob"))
-
 marco, giulia = list(bank.accounts)
-
 print(bank.deposit_money("saving", marco, "Marcoo", 200))
 print(bank.deposit_money("checking", giulia, "Giulia", "50"))
 print(bank.deposit_money("saving", marco, "Giulia", 10))
-
 print(bank.withdraw_money("saving", marco, "Marcoo", 500))
 print(bank.withdraw_money("checking", giulia, "Giulia", 120))
-
 print(bank.transfer_money(75, marco, giulia))
 print(bank.transfer_money(1000, marco, giulia))
-
 print(bank.find_account_by_its_number(marco))
 print(bank.find_account_by_its_number(123))
-
 bank.show_total_worth_of_bank()
