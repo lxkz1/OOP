@@ -89,7 +89,7 @@ class Bank:
         for account in self.accounts:
             accounts = self.accounts[account]
             total += accounts.balance
-        print(f"Total Amount Held : {total}")
+        print(f"Total Amount Held : {total}$")
 
     def transfer_money(self, amount, account_number,ndaccountnumber):
         if account_number not in self.accounts:
