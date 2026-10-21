@@ -95,3 +95,18 @@ class Employee:
 
 anna = Employee.from_sentence_create_employee("Anna,Engineer,52000")
 anna.display_employee()
+luca = Employee("Luca", "Developer", 30000)
+luca.display_employee()
+print(luca.raise_salary())
+marco = Employee.from_dict_create_employee({"name": "Marco", "job_title": "Designer", "salary": 40000})
+Employee.from_dict_create_employee({"name": "Giulia", "salary": 45000})
+print(Employee.from_dict_create_employee("not a dict"))
+print(Employee.from_sentence_create_employee("Bob Manager 60000"))
+Employee.from_sentence_create_employee("Bob,Manager,-5")
+try:
+    Employee("Zero", "Intern", 0)
+except ValueError as e:
+    print(f"ValueError: {e}")
+Employee.find_employee("Marco")
+print(Employee.find_employee("Nobody"))
+print("Employees created:", Employee.employee_number)
