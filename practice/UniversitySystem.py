@@ -65,7 +65,7 @@ class University:
             print(f"There are no departments available in {self.name} University")
         else:
             for i , department in enumerate(self.departments):
-            print(f"Department Number : {i} ,Date Of Foundation : {self.date_of_foundation}, Department Name : {department.name},Number Of Student's : {len(department.student_number)},Number Of Professor's : {len(department.professor_number)}")
+                print(f"Department Number : {i} ,Date Of Foundation : {self.date_of_foundation}, Department Name : {department.name},Number Of Student's : {len(department.student_number)},Number Of Professor's : {len(department.professor_number)}")
 
     def get_department(self,name):
         for department in self.departments:
