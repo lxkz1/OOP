@@ -8,7 +8,7 @@ class Contact:
         Contact.all_contact.append(self)
 
     def display(self):
-        print(f"{self.name}  , {self.phone_number} ")
+        print(f"{self.name} , {self.phone_number} ")
 
     @classmethod
     def created_from_text(cls, text):
@@ -18,7 +18,7 @@ class Contact:
                 return f"Invalid Phone Number"
             else:
                 x = cls(name, number)
-                print(f"{x.name} Successfully added to teh contact Rubric")
+                print(f"{x.name} Successfully added to the contact Rubric")
                 return x
         except(ValueError):
             return f"Your text does not contain follow the correct format"
