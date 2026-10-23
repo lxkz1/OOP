@@ -31,10 +31,10 @@ class Contact:
             try:
                 sign , numbers = number.split("+")
                 numberss = numbers.replace(" ", "")
-                if not isinstance(numberss,int):
-                    return False
-                else:
+                if numberss.isdigit():
                     return True
+                else:
+                    return False
             except(ValueError):
                 return False
 
@@ -43,6 +43,21 @@ class Contact:
         for contact in Contact.all_contact:
             if person == contact.name:
                 Contact.display(contact)
+                break
         else:
             return f"The name You have provided does not appear in your rubric"
+
+
+luca = Contact("Luca", "+39 333 1234567")
+luca.display()
+anna = Contact.created_from_text("Anna;+44 7700 900123")
+anna.display()
+print(Contact.created_from_text("Marco;333 1234567"))
+print(Contact.created_from_text("Giulia;+39 abc"))
+print(Contact.created_from_text("Bob +39 333 1234567"))
+print(Contact.check_number("+39 333 1234567"))
+print(Contact.check_number("+39+333"))
+Contact.find("Anna")
+print(Contact.find("Nobody"))
+print("Contacts saved:", len(Contact.all_contact))
 
